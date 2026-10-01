@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 1. АНАЛИЗ МЕТАДАННЫХ -->
+    <title>Снять и купить жилье в Азии: аренда для экспатов | KeyHaven</title>
+    <meta name="description" content="Планируете переезд? Поможем безопасно снять и купить жилье в Азии (Тайланд, Вьетнам, Бали). Долгосрочная аренда для экспатов без скрытых комиссий. Заходите!">
+    
+    <!-- Hreflang для мультиязычности (физические URL) -->
+    <link rel="alternate" hreflang="ru" href="https://keyhaven.asia/ru/" />
+    <link rel="alternate" hreflang="en" href="https://keyhaven.asia/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://keyhaven.asia/en/" />
+
+    <!-- Подключение шрифта Nunito -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Микроразметка Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "KeyHaven Asia",
+      "image": "https://keyhaven.asia/logo.jpg",
+      "description": "Надежная платформа KeyHaven Asia: снять и купить жилье в Азии. От студий до вилл. "
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Nguyen Van Linh",
+        "addressLocality": "Da Nang",
+        "addressCountry": "VN"
+      },
+      "telephone": "+84123456789",
+      "url": "https://keyhaven.asia/ru/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Можно ли снять жилье без посредников на долгосрок?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, наша платформа позволяет арендовать недвижимость без скрытых комиссий. "
+        }
+      }, {
+        "@type": "Question",
+        "name": "Помогаете ли вы с получением ВНЖ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "При покупке инвестиционной недвижимости в ряде стран (например, Индонезия, Тайланд) наши партнеры консультируют по вопросам получения виз и ВНЖ."
+        }
+      }]
+    }
+    </script>
+
+    <style>
+        /* =========================================
+           НАСТРОЙКИ ЦВЕТОВ И БАЗОВЫЕ СТИЛИ
+           ========================================= */
+        :root {
+            --primary: #086D67;      /* Цвет из нового логотипа */
+            --primary-dark: #06524d;
+            --accent: #F49F1B;       /* Желтый из нового логотипа */
+            --accent-hover: #d68912;
+            --bg-white: #FFFFFF;
+            --bg-light: #F7F9FC;
+            --text-dark: #1F2937;
+            --text-gray: #6B7280;
+            --border-color: #E5E7EB;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 12px 32px rgba(8, 109, 103, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Nunito', sans-serif; }
+        body { background-color: var(--bg-white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        .container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 0 20px; }
+        .section-title { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+        .section-subtitle { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 3rem; max-width: 800px; }
+
+        /* =========================================
+           ШАПКА И ПОИСК
+           ========================================= */
+        header { position: sticky; top: 0; background-color: var(--bg-white); box-shadow: var(--shadow-sm); z-index: 1000; padding: 12px 0; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .logo svg { width: 180px; height: auto; display: block; }
+        
+        .header-center { display: none; flex: 1; align-items: center; justify-content: center; gap: 30px; }
+        
+        /* Улучшенный фильтр */
+        .header-search {
+            display: flex; align-items: center; background: var(--bg-white);
+            border: 1px solid var(--border-color); border-radius: 100px;
+            box-shadow: var(--shadow-sm); padding: 4px; transition: var(--transition);
+            flex-wrap: wrap;
+        }
+        .header-search:hover { box-shadow: var(--shadow-md); }
+        .search-item { border: none; background: transparent; padding: 8px 12px; font-size: 0.95rem; font-weight: 600; color: var(--text-dark); outline: none; cursor: pointer; }
+        .search-input { width: 110px; }
+        .search-divider { width: 1px; height: 24px; background-color: var(--border-color); margin: 0 4px; }
+        .search-btn { background-color: var(--accent); color: var(--bg-white); border: none; border-radius: 100px; padding: 10px 24px; font-weight: 700; cursor: pointer; transition: var(--transition); margin-left: 4px; }
+        .search-btn:hover { background-color: var(--accent-hover); }
+
+        .nav-links { display: flex; gap: 24px; font-weight: 600; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--primary); }
+        .header-controls { display: flex; align-items: center; gap: 12px; }
+        
+        /* Переключатель языков (Физические URL) */
+        .lang-select { padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-weight: 600; font-size: 0.9rem; outline: none; cursor: pointer; }
+        .burger-menu { display: block; background: none; border: none; font-size: 28px; color: var(--primary); cursor: pointer; }
+
+        /* =========================================
+           ГЛАВНЫЙ ЭКРАН (HERO)
+           ========================================= */
+        .hero {
+            background: linear-gradient(rgba(8, 109, 103, 0.7), rgba(8, 109, 103, 0.85)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 100px 20px; text-align: center; color: var(--bg-white); min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; line-height: 1.2; max-width: 900px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.25rem; margin-bottom: 36px; font-weight: 500; max-width: 900px; text-shadow: 0 1px 6px rgba(0,0,0,0.4); opacity: 0.95; }
+        .hero-btn { background-color: var(--accent); color: var(--bg-white); padding: 16px 44px; font-size: 1.1rem; font-weight: 800; border-radius: var(--radius-md); display: inline-block; box-shadow: 0 4px 15px rgba(244, 159, 27, 0.4); }
+        .hero-btn:hover { background-color: var(--accent-hover); transform: translateY(-3px); }
+
+        /* =========================================
+           БАЗОВЫЕ СЕКЦИИ И КАРТОЧКИ
+           ========================================= */
+        .section-padding { padding: 80px 0; }
+        .bg-gray { background-color: var(--bg-light); }
+
+        .cards-wrapper { width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 0 40px 0; scrollbar-width: thin; scrollbar-color: var(--primary) var(--border-color); }
+        .cards-grid { display: flex; gap: 24px; }
+        .card { flex: 0 0 300px; scroll-snap-align: start; background: var(--bg-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); transition: var(--transition); }
+        .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); border-color: transparent; }
+        .card-img-wrap { width: 100%; height: 220px; overflow: hidden; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .card:hover .card-img { transform: scale(1.05); }
+        .card-content { padding: 20px; }
+        .card-location { color: var(--text-gray); font-size: 0.85rem; margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
+        .card-title { font-size: 1.15rem; color: var(--text-dark); margin-bottom: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .card-details { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .card-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .card-price span { font-size: 0.85rem; color: var(--text-gray); font-weight: 500; }
+        .card-features { display: flex; gap: 12px; color: var(--text-gray); font-size: 0.9rem; font-weight: 600; }
+
+        .btn-outline { display: block; width: max-content; margin: 0 auto; padding: 14px 36px; border: 2px solid var(--primary); color: var(--primary); border-radius: var(--radius-md); font-weight: 700; transition: var(--transition); text-align: center; }
+        .btn-outline:hover { background-color: var(--primary); color: var(--bg-white); }
+
+        /* =========================================
+           НОВЫЕ БЛОКИ: ПОДБЕРИ САМ, E-E-A-T, FAQ
+           ========================================= */
+        .quiz-banner { background: var(--primary); border-radius: var(--radius-lg); padding: 50px; color: white; text-align: center; margin-bottom: 40px; box-shadow: var(--shadow-md); }
+        .quiz-banner h2 { font-size: 2.2rem; margin-bottom: 15px; color: white; }
+        .quiz-banner p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; max-width: 900px; margin-inline: auto; }
+        
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-box { background: var(--bg-white); padding: 30px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); }
+        .feature-box h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.3rem; }
+
+        .faq-item { background: var(--bg-white); border: 1px solid var(--border-color); border-radius: var(--radius-md); margin-bottom: 15px; overflow: hidden; }
+        .faq-question { padding: 20px; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; background: var(--bg-light); }
+        .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s ease; color: var(--text-gray); }
+        .faq-item.active .faq-answer { padding: 20px; max-height: 400px; border-top: 1px solid var(--border-color); }
+        .faq-item.active .faq-question::after { content: "−"; }
+        .faq-question::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--primary); }
+
+      
+
+        /* =========================================
+           ПОДВАЛ (ФУТЕР)
+           ========================================= */
+        footer { background-color: var(--text-dark); color: #D1D5DB; padding: 60px 0 30px; font-size: 0.95rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-logo svg { width: 180px; margin-bottom: 20px; opacity: 0.9; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-gray); font-size: 0.85rem; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-bottom a:hover { color: var(--bg-white); }
+
+        /* =========================================
+           АДАПТИВНОСТЬ
+           ========================================= */
+        @media (min-width: 1024px) {
+            .burger-menu { display: none; }
+            .header-center { display: flex; }
+        }
+        @media (min-width: 1600px) {
+            .cards-wrapper { overflow-x: visible; }
+            .cards-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+            .card { flex: none; width: 100%; }
+        }
+        @media (max-width: 1023px) {
+            .mobile-menu-active .header-center { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: var(--shadow-md); border-top: 1px solid var(--border-color); }
+            .mobile-menu-active .nav-links { flex-direction: column; align-items: center; margin-top: 20px; }
+            .header-search { flex-direction: column; border-radius: var(--radius-md); padding: 15px; width: 100%; }
+            .search-divider { width: 100%; height: 1px; margin: 10px 0; }
+            .search-input, .search-item { width: 100%; text-align: center; }
+            .search-btn { width: 100%; border-radius: var(--radius-md); margin: 10px 0 0 0; }
+            .hero h1 { font-size: 2.5rem; }
+            .quiz-banner { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header id="header">
+        <div class="container header-inner">
+            <a href="/ru/" class="logo">
+                <!-- НОВЫЙ ЛОГОТИП HEADER (KeyHaven) -->
+                <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 2048 477" role="img">
+                    <title>KeyHaven Asia Logo</title>
+                    <path fill="#fff" d="M0 0h2048v477H0z"/>
+                    <path fill="#086d67" d="M323.298 59.4c19.305-2.989 48.305 4.275 65.55 13.484a117.4 117.4 0 0 1 57.214 69.647 119.4 119.4 0 0 1-8.974 90.359c-17.74 32.99-43.987 50.237-78.847 60.716l.098 15.548c5.032 5.322 12.658 8.007 16.387 14.356 7.465 12.714-14.545 15.629-16.576 24.026-1.768 7.308 13.922 11.885 16.246 17.769 6.279 15.904-13.117 14.203-16.173 25.724 2.103 14.556 35.903 15.338 4.444 36.859-7.86 7.588-25.978 31.361-37.191 30.128-21.462-2.36-28.526-19.945-28.598-39.256-.158-42.364-1.887-84.581-1.881-126.941-16.159-5.328-28.308-11.153-41.618-22.131a117.86 117.86 0 0 1-42.483-79.937 118.05 118.05 0 0 1 26.924-86.691c22.057-26.62 51.409-40.472 85.478-43.66"/>
+                    <path fill="#fff" d="m330.028 137.018 85.877 65.967c-15.193 37.402-41.358 60.741-82.906 63.086-42.029.141-74.226-23.815-87.338-63.513 27.089-21.541 56.632-45.029 84.367-65.54"/>
+                    <path fill="#f49f1b" d="M324.418 171.201c12.973-1.221 25.051 3.742 31.486 15.516a28.02 28.02 0 0 1 2.335 21.773c-2.96 9.725-9.115 14.179-17.428 18.615.057 9.924 1.642 18.717-5.021 25.679-21.019 2.476-17.416-9.536-16.93-25.547-7.81-3.939-13.885-8.923-17.051-17.36a27.64 27.64 0 0 1 .905-21.154c4.702-10.2 11.957-13.946 21.704-17.522"/>
+                    <path fill="#fff" d="M322.574 90.32q2.22-.177 4.443-.295a87.5 87.5 0 0 1 63.313 22.531c18.759 17.002 27.97 37.977 29.172 63.02-6.455-4.211-16.499-12.404-22.916-17.304-.181-10.338 4.675-31.541-10.251-31.778-16.671-.265-11.369 8.847-14.392 11.718-6.168-3.402-21.998-16.606-28.325-21.677-5.646-4.729-12.162-11.667-19.508-6.218-27.884 20.683-54.297 44.082-82.115 64.857 4.581-46.638 33.864-78.317 80.579-84.853"/>
+                    <path fill="#086d67" d="M522.955 154.089a1273 1273 0 0 1 20.588-.503c30.644-.206 19.228 20.346 21.198 42.364.301 3.365-.008 7.566-.007 11.037 9.952-11.651 36.662-45.077 49.763-52.033 3.348-1.778 41.571-1.907 46.402.655 2.58 3.091 1.957 1.69 2.54 5.657-1.631 5.649-45.586 50.748-53.237 58.952 12.431 18.018 26.518 36.564 39.56 54.289 4.759 6.849 13.174 14.947 15.086 22.912-3.011 11.478-35.039 6.254-44.446 6.512-9.463.259-16.388-11.996-21.406-19.219-7.526-10.833-15.09-22.157-23.091-32.963l-11.169 10.367c-.515 26.59 8.38 45.838-25.597 42.565-7.495-.722-14.867 1.681-21.159-4.8-.807-3.15-1.646-7.558-1.693-10.853-.587-41.631-.389-83.362-.056-124.997.038-4.749 3.335-7.22 6.724-9.942m258.291 34.259c8.917-.102 23.569-1.966 31.566 1.574 8.002 3.543 23.363 51.472 27.449 61.643 6.9-16.062 11.241-33.159 17.782-49.351 1.902-4.71 4.386-10.674 9.399-12.731 5.371-2.205 27.909-2.033 33.106.174 1.976.84 4.429 2.751 5.179 4.812 2.914 8.014-34.394 92.119-40.268 106.285-8.691 21.034-15.977 43.108-40.377 49.469-21.505 5.097-60.113 7.1-43.293-27.389 7.136-14.632 15.417-5.036 27.562-8.047 4.846-1.202 7.86-7.284 6.147-11.788-12.826-33.728-28.779-66.528-41.999-100.154-3.25-8.276.197-12.005 7.747-14.497"/>
+                    <path fill="#086d67" d="M707.449 187.186q5.37-.35 10.749-.484a60.8 60.8 0 0 1 42.95 16.88c9.419 9.171 27.719 41.48 11.388 52.1-3.138 2.041-24.702 1.415-30.479 1.385a3998 3998 0 0 0-42.695.015c15.662 28.112 30.367 11.859 50.785 6.433 3.781-1.005 12.208 8.196 15.195 11.119 22.66 19.823-44.404 45.547-82.091 21.485a58.04 58.04 0 0 1-25.816-36.946c-8.062-36.944 14.588-64.317 50.014-71.987"/>
+                    <path fill="#fff" d="M713.268 218.079c8.763-.708 16.775 1.454 22.28 8.878.574 3.123.781 1.927-1.024 4.782-3.269 2.286-8.63 1.574-12.774 1.458-6.086.165-19.043 2.077-21.495-4.658 1.802-4.486 8.838-8.466 13.013-10.46"/>
+                    <path fill="#086d67" d="M1015.75 214.097c.14-11.815-2.5-45.68.69-54.893 1.05-3.022 2.99-5.959 5.97-7.33 3.87-1.778 11.01-1.529 14.93-.028 2.39.919 4.5 2.636 5.51 5.04 1.63 3.882 3.05 135.718.33 141.829-1.56 3.513-4.85 4.964-8.21 6.288-1.16.028-2.33.042-3.5.042-14.55-.025-15.97-5.882-16.01-19.446-.04-15.183.17-30.4.31-45.583l-71.575.009c.048 17.566.117 35.397-.035 52.983-.029 3.272-1.839 7.265-4.35 9.416-3.59 2.89-9.173 2.734-13.434 2.366-5.795-.501-10.431-4.524-10.635-10.545-.916-27.081-.141-54.284-.276-81.395-.086-17.363-.318-34.817.066-52.159.099-4.349 3.891-7.216 7.107-9.605a226 226 0 0 1 4.429-.22c19.604-.756 17.002 11.431 17.321 27.117.245 11.993-.123 24.218-.205 36.23 23.688-.313 47.839-.1 71.567-.116m296.59-25.78.87-.045c32.69-1.58 57.63 19.126 60.73 52.215.65 7.026-2.76 13.906-10.53 14.416-25.12 1.647-50.52-.431-75.74.604 7.36 25.007 25.02 35.08 49.33 22.373 7.24-3.781 9.52-8.022 18.06-6.761 6.04 4.122 14.27 13.087 7.32 19.191-57.69 50.633-131.97-16.677-90.56-79.751 8.77-13.346 25.47-20.081 40.52-22.242"/>
+                    <path fill="#fff" d="M1313.68 211.209c18.34-.989 26.79 6.761 32.17 23.493l-24.74-.008c-10.69.111-21.67-.048-32.38-.079 3.97-14.023 11.12-20.001 24.95-23.406"/>
+                    <path fill="#086d67" d="M1099.11 188.348c17.33-1.813 36.59 3.99 47.18 18.399 13.08 17.806 8.55 40.569 9.01 61.191-.79 6.812 2.22 21.707.01 27.735-7.77 21.227-20.27 8.213-26.96-1.825-20.46 17.524-45.88 17.062-65.46-1.459-4.81-6.521-8.6-14.891-7.94-22.895 2.93-35.731 39.82-37.262 67.23-34.512 2.73.273 4.7-.388 6.52-2.127.57-5.262-4.94-13.926-8.94-16.814-11.89-8.734-28.14-2.419-40.22 3.18-11.96 5.543-22.91-7.235-15.44-16.974 6.84-8.919 24.1-12.538 35.01-13.899"/>
+                    <path fill="#fff" d="M1101.96 253.361c8.65-.57 17.95.563 26.46 2.087.61 17.036-2.96 22.797-19.35 28.449-.63.131-1.26.248-1.9.35-26.52 4.306-37.81-26.262-5.21-30.886"/>
+                    <path fill="#086d67" d="M1436.93 188.295c9.9-.375 19.28.717 28.24 5.282 11.2 5.705 19.32 16.157 23.1 28.033 3.2 10.029 5.16 72.686 1.19 80.163-1.01 1.894-2.8 3.147-4.83 3.758-4.17 1.257-12.6 1.548-16.49-.693-10.43-6.006-2.38-58.636-7.09-73.937-1.91-6.209-5.34-12.462-11.29-15.566-7.41-3.866-16.57-2.477-24.18-.05-27.32 14.599-7.61 62.043-17.06 85.873-4 10.082-24.89 5.676-25.27-2.264-.9-18.743-.62-30.984-.56-51.297.04-10.999-2.45-42.052.36-54.134 9.41-8.397 22.22-6.774 25.33 9.621 8.97-9.509 16.04-12.72 28.55-14.789m-227.51 79.987c8.58-20.562 15.75-42.12 24.05-62.827 1.6-3.989 5.04-13.967 9.55-15.094 34.28-8.58 18.22 18.989 11.37 35.383-5.18 12.212-27.02 72.923-34.3 78.031-4.09 2.865-10.08 3.415-14.87 2.531-3.85-.711-7.53-2.394-9.77-5.721-8.54-12.637-22.36-51.165-28.96-66.832-4.3-10.219-10.07-20.517-13.9-30.774-.82-2.197-1.42-4.712-.89-7.05.76-3.427 3.26-4.942 6-6.75 7.85-.391 16.83-1.933 21.1 6.142 4.68 8.86 8.07 18.243 11.85 27.519z"/>
+                    <path fill="#f49f1b" d="m1842.52 209.593 11.58.185 28.36 60.787-12.03.122c-4.58-11.327-3.8-14.452-16.68-14.148-7.17.102-14.35.122-21.52.06l-6.55 14.088c-3.32.129-8.09-.201-11.52-.336 8.35-19.642 19.4-40.797 28.36-60.758"/>
+                    <path fill="#fff" d="M1848.24 222.783c1.94 2.44 9.52 19.801 10.65 23.189-2.14 1.398-5.12.984-8.04 1.064l-13.56-.267z"/>
+                    <path fill="#f49f1b" d="M1623.29 209.575c13.18-.391 11.57.711 17.13 12.657 7.49 16.107 15.18 32.203 22.18 48.531-24.21 1.336-6.22-13.548-26.48-14.086-7.68.065-15.57-.108-23.27-.189l-6.37 14.097-11.74-.102c9.29-20.41 18.81-40.714 28.55-60.908"/>
+                    <path fill="#fff" d="M1628.19 223.514c2.84 1.901 9.98 19.068 10.66 22.896-1.29.895-8.99.629-11.1.637l-10.2-.123z"/>
+                    <path fill="#f49f1b" d="M1707.36 209.246c12.79-1.014 17.41.146 28.71 5.256-.9 2.32-3.06 6.381-4.24 8.763-7.67-3.335-28.27-10.958-29.65 3.605 3.26 10.441 34.89 7.898 36.22 23.705 1.25 14.853-10.45 19.319-22.64 21.153-11.69-.358-17.36-2.506-26.99-8.157 1.21-2.628 3.5-6.091 5.08-8.643 7.83 5.197 27.92 11.148 34.17 2.252.77-4.02-4.71-9.035-8.19-10.402-10.35-4.059-27.83-3.553-28.9-17.949-.9-12.011 6.25-16.334 16.43-19.583m-167.54-32.754c.97.409 2.77 1.565 3.76 2.163 1.47 2.88 1.18 6.923 1.17 10.144-.03 35.855.32 71.746-.21 107.591-.03 1.82-.98 3.8-2.09 5.207l-3.44-1.477c-2.11-3.345-1.92-5.686-1.9-9.642.15-36.354-.51-72.789.46-109.119.04-1.656 1.19-3.623 2.25-4.867m232.45 33.205c4.13-.112 5.83-.215 9.85.635 2.47 3.267 1.28 52.594 1.06 60.437-4.42.194-7.39.811-10.6-1.809-1.31-7.401-.38-49.056-.31-59.263"/>
+                </svg>
+            </a>
+
+            <!-- Поиск + Навигация -->
+            <div class="header-center" id="nav-menu">
+                <div class="header-search">
+                    <select class="search-item">
+                        <option value="" disabled selected>Локация</option>
+                        <option value="danang">Дананг, Вьетнам</option>
+                        <option value="hcmc">Хошимин, Вьетнам</option>
+                        <option value="phuket">Пхукет, Тайланд</option>
+                        <option value="samui">Самуи, Тайланд</option>
+                        <option value="bali">Бали, Индонезия</option>
+                    </select>
+                    <div class="search-divider"></div>
+                    <select class="search-item">
+                        <option value="rent">Аренда</option>
+                        <option value="buy">Покупка</option>
+                    </select>
+                    <div class="search-divider"></div>
+                    <input type="number" class="search-item search-input" placeholder="Цена от ($)">
+                    <div class="search-divider"></div>
+                    <input type="number" class="search-item search-input" placeholder="Цена до ($)">
+                    <div class="search-divider"></div>
+                    <select class="search-item">
+                        <option value="" disabled selected>Спальни</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3+</option>
+                    </select>
+                    <button class="search-btn">Найти</button>
+                </div>
+
+                <nav class="nav-links">
+                    <a href="#rent">Аренда</a>
+                    <a href="#buy">Покупка</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+            </div>
+
+            <!-- Языки (Физические URL) + Бургер -->
+            <div class="header-controls">
+                <select class="lang-select" onchange="window.location.href=this.value">
+                    <option value="/en/">EN</option>
+                    <option value="/ru/" selected>RU</option>
+                </select>
+                <button class="burger-menu" id="burger-menu" aria-label="Меню">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ГЛАВНЫЙ ЭКРАН (HERO) -->
+        <section class="hero">
+            <h1>KeyHaven Asia: Поможем снять и купить жилье в Азии</h1>
+            <p>Планируете релокацию? Наш надежный агрегатор поможет найти жилье для долгосрочной аренды. От уютной студии до роскошной виллы, кондоминиума или апартаментов. Учтем важные для вас параметры: прозрачный депозит и коммунальные платежи.</p>
+            <a href="#rent" class="hero-btn">Смотреть каталог</a>
+        </section>
+
+        <!-- РАЗДЕЛ "АРЕНДА" -->
+        <section class="section-padding bg-gray" id="rent">
+            <div class="container">
+                <h2 class="section-title">Долгосрочная аренда недвижимости (Тайланд, Вьетнам, Индонезия)</h2>
+                
+                <div class="cards-wrapper">
+                    <div class="cards-grid">
+                        <!-- Карточка 1 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Современная студия у моря в Дананге для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Дананг, Вьетнам</div>
+                                <h3 class="card-title">Современная студия у моря</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 1 спальня</span><span>📏 45 м²</span></div>
+                                    <div class="card-price">$450 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 2 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Апартаменты в кондоминиуме на Пхукете для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Пхукет, Тайланд</div>
+                                <h3 class="card-title">Апартаменты в кондоминиуме</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 2 спальни</span><span>📏 70 м²</span></div>
+                                    <div class="card-price">$800 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 3 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Стильный лофт в Хошимине для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Хошимин, Вьетнам</div>
+                                <h3 class="card-title">Стильный лофт в District 2</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 1 спальня</span><span>📏 60 м²</span></div>
+                                    <div class="card-price">$650 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Карточка 4 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Уютная вилла с садом на Бали для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Бали, Индонезия</div>
+                                <h3 class="card-title">Уютная вилла с садом</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 3 спальни</span><span>📏 120 м²</span></div>
+                                    <div class="card-price">$1,500 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/ru/rent/" class="btn-outline">Смотреть все варианты аренды</a>
+            </div>
+        </section>
+
+        <!-- БЛОК ПОДБЕРИ САМ (ИНТЕРАКТИВ/LSI) -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="quiz-banner">
+                    <h2>Не знаешь, что выбрать? Используй фильтр «Подбери сам»</h2>
+                    <p>Сложно определиться с районом и типом недвижимости? Пройди короткий опрос в нашем умном фильтре, и алгоритм покажет лучшие варианты, будь то вилла на Бали или студия в Дананге, под ваш бюджет и цели (жизнь, удаленка, инвестиции).</p>
+                    <a href="/ru/quiz/" class="hero-btn" style="background-color: var(--bg-white); color: var(--primary);">Пройти опрос за 1 минуту</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- РАЗДЕЛ "ПОКУПКА" -->
+        <section class="section-padding bg-gray" id="buy">
+            <div class="container">
+                <h2 class="section-title">Каталог объектов: покупка жилья в Азии для жизни и инвестиций</h2>
+                
+                <div class="cards-wrapper">
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Роскошная вилла с бассейном на Пхукете для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Пхукет, Тайланд</div>
+                                <h3 class="card-title">Роскошная вилла с бассейном</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 250 м²</span></div>
+                                    <div class="card-price">$350,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Таунхаус в закрытом комплексе на Самуи для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Самуи, Тайланд</div>
+                                <h3 class="card-title">Таунхаус в закрытом комплексе</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 150 м²</span></div>
+                                    <div class="card-price">$180,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Современный дом у реки в Дананге для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Дананг, Вьетнам</div>
+                                <h3 class="card-title">Современный дом у реки</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 180 м²</span></div>
+                                    <div class="card-price">$220,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Классическая вилла в Убуде на Бали для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Бали, Индонезия</div>
+                                <h3 class="card-title">Классическая вилла в Убуде</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 280 м²</span></div>
+                                    <div class="card-price">$390,000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/ru/buy/" class="btn-outline">Смотреть все варианты для покупки</a>
+            </div>
+        </section>
+        <!-- БЛОК FAQ -->
+        <section class="section-padding bg-gray" id="faq">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title text-center">Часто задаваемые вопросы (FAQ) о релокации</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Можно ли снять жилье без посредников на долгосрок?</div>
+                    <div class="faq-answer">Да, платформа KeyHaven Asia позволяет арендовать недвижимость напрямую от проверенных собственников. Вы экономите на агентских комиссиях, при этом все договоры сопровождаются нашими экспертами для вашей безопасности.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Помогаете ли вы с получением ВНЖ?</div>
+                    <div class="faq-answer">При покупке инвестиционной недвижимости в таких странах, как Индонезия и Тайланд, мы предоставляем консалтинг по вопросам легализации, получения инвестиционных виз и ВНЖ (КИТАС, Elite Visa и др.).</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Как оплачиваются коммунальные платежи?</div>
+                    <div class="faq-answer">В большинстве контрактов на кондоминиумы и апартаменты (Вьетнам, Тайланд) вода и электричество оплачиваются по государственным счетчикам. В виллах (Бали) часто включена уборка пула и сада. Мы детально прописываем эти условия до заезда.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ПОДВАЛ (ФУТЕР) С E-E-A-T ДАННЫМИ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="/ru/" class="footer-logo">
+                        <!-- НОВЫЙ ЛОГОТИП FOOTER (KeyHaven) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block" viewBox="0 0 2048 1870"><path fill="#fff" d="M0 0h2048v1870H0z"/><path fill="#076d68" d="M960.533 81.411c56.487-6.045 125.747 9.757 175.177 37.895a297.57 297.57 0 0 1 140.64 180.489c21.23 77.537 11.27 154.529-29.41 223.712-33.85 57.574-86.38 102.97-148.37 128.165-15.76 6.403-31.39 10.62-47.69 15.015-.01 10.211-.56 22.431-.01 32.418 1.6 29.348 47.8 25.772 40.66 61.818-.29 18.164-40.87 27.204-40.78 40.98.16 23.343 46.42 23.598 40.26 56.203-4.65 24.654-37.53 23.053-40.13 41.496-2.4 16.967 46.73 28.3 41.25 51.218-2.75 14.455-13.8 21.39-24.08 28.974-24.3 17.859-47.82 48.086-72.541 62.236-25.647 14.69-60.316-6.66-77.212-25.35-23.458-22.555-23.113-43.965-22.999-74.093.353-93.385-5.915-187.212-3.49-280.562-36.907-9.193-81.796-35.943-110.087-60.806-56.047-49.256-94.12-122.408-99.875-196.757a298.5 298.5 0 0 1 70.963-217.316A305.3 305.3 0 0 1 960.533 81.411"/><path fill="#fff" d="M979.432 273.917c10.206 5.3 26.418 18.687 35.948 26.054 11.21 8.655 22.5 17.067 33.79 25.609l150.05 112.83c-13.47 34.872-24.27 58.062-50.44 86.358a228.98 228.98 0 0 1-159.035 73.416c-40.728.498-76.263-6.716-112.404-25.974a225.32 225.32 0 0 1-109.213-135.418c7.065-6.133 15.732-12.637 23.228-18.275 63.145-47.496 124.791-97.325 188.076-144.6"/><path fill="#f4a01b" d="M971.1 357.39c13.675-.729 23.373-.929 36.32 4.043a74.06 74.06 0 0 1 41.68 39.037c17.76 39.904-1.39 79.301-40.17 96.496.78 13.492.9 29.181.27 42.674-.55 12.007-7.2 19.417-17.833 24.233-46.792 12.778-38.473-38.345-38.416-66.704-45.013-14.681-59.912-75.653-31.394-112.138 13.321-17.042 28.495-24.622 49.543-27.641"/><path fill="#fff" d="m966.469 156.45 1.809-.104c129.822-6.725 233.412 86.915 240.602 216.597-20.18-14.628-40.42-30.57-60.59-45.509-.1-13.842 1.69-55.752-1.41-68.673-2.05-8.546-43.1-8.585-52.15-2.112-4.15 6.797-3.07 18.379-3.12 26.726-21.95-18.501-50.59-39.229-73.79-57.132-37.168-29.427-38.216-31.404-76.351.143-9.646 7.98-21.875 17.162-31.822 25.081l-86.346 68.348c-19.536 15.473-42.147 34.024-62.482 48.087 10.795-116.597 88.794-197.687 205.65-211.452"/><path fill="#076d68" d="M98.932 1121.45c16.949-.16 33.91-.33 50.848-.57 7.519-.18 15.463 1.35 20.797 7.08 7.227 7.77 7.148 18.98 6.941 28.92-.472 22.62.319 45.23.156 67.85 20.467-20.61 38.606-44.49 58.198-66.01 10.363-10.34 26.252-36.05 42.319-36.93 25.324-1.38 53.676-.47 79.229-.21 12.19.13 18.027 12.73 10.234 22.05-10.482 12.54-22.661 24.83-33.991 36.82a5380 5380 0 0 0-67.876 72.67c25.72 35.29 56.882 72.86 83.698 108.45 15.911 20.52 55.029 57.11-1.181 55.17-16.131-.56-69.19 3.46-78.136-6.92-25.099-29.11-47.046-65.64-71.221-96.08-6.782 7.01-14.303 13.89-21.418 20.61-.669 78.72 14.023 86.43-74.98 81.87-27.649-1.41-21.904-30.41-21.863-48.44l-.045-55.51-.174-109.75c-.035-20.5-.304-41.32.374-61.81.36-10.9 7.662-17.32 18.09-19.26m506.219 71.02c66.706-.67 60.751-9.38 83.965 54.34 7.69 21.15 15.522 42.24 23.493 63.28 9.418-23.71 17.192-47.92 25.927-71.81 4.644-10.16 10.96-39.58 22.487-43.51 11.456-3.9 52.231-3.47 63.003.05 25.399 8.29-4.817 60.14-11.767 77.84a7890 7890 0 0 1-55.353 138.08c-15.272 38.36-29.026 75.81-72.586 89.2-24.291 6.85-56.131 8.17-79.588-2.16-22.597-9.95-5.358-41.88 1.696-57.13 8.013-17.33 28.151-3.61 41.517-7.67 10.652-3.23 14.854-10.25 20.019-19.57-18.85-48.08-41.423-96.79-60.57-145.07-6.663-18.46-18.307-37.52-22.801-56.52-2.866-12.12 10.929-18.35 20.558-19.35"/><path fill="#076d68" d="M475.944 1188.43c30.902-.82 60.309 7.45 83.737 28.18a113.54 113.54 0 0 1 37.493 77.48c.68 11.92-3.566 28.69-16.519 29.33-42.735 2.1-90.521-.02-132.891 1.48 11.888 29.12 36.734 36.47 65.004 25.24 7.08-2.81 22.553-14.48 29.593-12.99 11.538 2.44 29.984 21.23 36.829 30.32 7.476 15.69-8.036 24.71-19.355 31.76-47.099 29.34-115.307 26.94-157.716-9.66a113.46 113.46 0 0 1-38.533-78.57c-4.84-69.71 44.577-118.01 112.358-122.57"/><path fill="#fff" d="M477.736 1247.16c22.459-1.14 33.259 9.86 38.839 30.31-9.896.24-20.147.2-30.075.3-13.244.05-27.163.34-40.306-.64 6.304-17.91 12.525-25.5 31.542-29.97"/><path fill="#076d68" d="m872.171 1117.36 1.6-.06c39.066-1.31 31.385 29.91 31.36 58.77q-.135 31.995.145 63.99c44.438.98 92.872-.09 137.664 0l-.05-65.85c-.02-11.28-.29-22.5.12-33.82.44-11.83 6.53-21 18.96-22.44 16.14-1.87 34.15-.09 34.98 20.3.75 18.49.48 37.11.55 55.68.34 38.49.31 76.99-.08 115.48q.045 28.395.45 56.79c.25 23.83 6.1 49.7-25.65 50.85-36.63-.12-29.35-29.57-29.37-57.13l.17-71.01c-43.793-1.31-93.842-.52-137.751-.04-.265 18.16 2.475 107.66-3.179 117.56-2.597 4.54-7.732 8.15-12.709 9.53-8.256 2.29-21.82 2-29.154-2.5-4.225-2.59-8.223-7.74-9.249-12.64-2.588-12.35-1.07-27.34-1.036-40l.093-65.18.159-97.25c-.045-20.06-.389-40.19.345-60.23.501-13.7 9.203-19.06 21.632-20.8m739.799 73.01c.58-.05 1.16-.11 1.74-.16 32.25-3.4 61.08 5.29 85.78 26.54 20.61 17.74 33.35 45.59 34.98 72.65.54 8.88.32 19.67-6.3 26.54-2.7 2.76-6.19 4.61-9.99 5.31-9.83 1.87-36.27.92-47.71 1.01-33.69.27-67.63-.78-101.36.12 13.59 52.57 64.24 68.39 107.82 33.98 6.78-5.35 10.21-6.17 18.4-5.26l1.28.15c71.8 32.02-57.86 107.3-137.06 48.06a114.1 114.1 0 0 1-44.51-75.59c-9.39-65.97 29.94-123.9 96.93-133.35"/><path fill="#fff" d="M1623.23 1234.42c32.53.49 49.57 15.32 56.79 46.78-16.72.26-33.44.37-50.16.32-19.99.09-39.99-.11-59.98-.59 8.42-27.42 23.58-44.25 53.35-46.51"/><path fill="#076d68" d="M1193.53 1190.35c22.54-2.05 46.43.89 66.51 11.79a88.98 88.98 0 0 1 43.79 54.4c3.68 12.88 4.03 25.18 3.92 38.49-.26 34.33.45 68.64.11 102.97-.21 21.17-27.05 24.01-41.41 15.54-8.26-4.93-9.33-12.23-10.81-20.75a114 114 0 0 1-4.71 4.89c-33.93 32.88-91.95 28.55-123.95-5.35-11.6-14.41-16.08-28.33-15.03-46.73 3.01-52.63 57.28-68.63 101.96-66.52 12.99.61 26.3 2.33 39.4 3.79-.2-4.41-.4-9.36-1.31-13.67a40.72 40.72 0 0 0-17.63-25.87c-17.78-11.43-42.88-9.66-61.49-1.38-10.58 5.23-24.16 18.51-35.98 8.14-19.82-17.39-12.96-35.99 8.69-46.24 16.89-8 30.11-11.61 47.94-13.5"/><path fill="#fff" d="M1198.29 1317.27c17.7-1.36 37.25 1.28 54.81 3.39.8 31.45-2.06 44.33-34.34 54.26-6.48 1.65-10.83 1.98-17.83 2.12-24.56.5-47.03-22.17-31.43-45.77 5.93-8.97 18.22-12.25 28.79-14"/><path fill="#076d68" d="M1857.62 1190.34c44.6-4.63 83.54 14.84 101.05 57.26 3.78 9.2 6.24 18.89 7.32 28.78 3.98 37.06-1.61 82.38.94 120.2 1.63 24.17-28.96 27.05-45.32 20.02-14.45-6.22-10.78-30.19-11.15-42.79-1.79-30.67 4.74-72.4-3.58-101.26-8.92-30.89-39.83-40.68-68.81-30.55-32.44 15.99-30.61 41.64-30.55 72.4l.27 52.48c.11 11.16-.05 21.41-.43 32.61-.99 28.38-54.49 27.04-54.38-.36.26-63.47-.69-126.86-2.72-190.28-.14-4.11.43-7.86 3.52-10.73 9.42-9.43 32.4-8.72 41.79.49 6.12 6.07 6.95 13.63 6.96 21.81 17.16-18.87 30.38-26.1 55.09-30.08m-444.48 152.97c14.19-31.86 24.61-66.29 37.98-98.51 4.26-10.26 14.93-47.78 25.49-50.15 70.8-15.92 37.63 35.66 23.75 69.6-20.16 46.27-37.48 94.01-57.62 140.3-2.98 6.85-7.33 11.78-14.69 13.81-14.62 4.03-36.97 2.91-43.97-12.99-7.67-15.63-13.33-32.21-20.28-48.15-19.78-45.41-38.5-91.35-59.86-136.04-7.06-14.75-3.35-24.82 12.72-28.75 13-.39 32.21-2.85 38.77 11.46 14.58 31.82 26.64 65.01 40.44 97.24 5.9 13.77 12.04 28.19 17.27 42.18"/><path fill="#f4a01b" d="M1346.83 1542.92c8.06-.44 16.25-.14 24.34.02 19.74 40.34 47.32 97.47 63.13 138.3-9.71.86-16.08.75-25.72.52-5.17-10.2-10.29-21-14.12-31.76-9.46.25-19.22.27-28.71.4-14.51.22-29.01.07-43.51-.44-3.87 10.33-10.04 21.89-15.02 31.88-8.53.29-17.84-.02-26.43-.14 16.13-35.74 33.81-71.08 49.9-106.87 4.64-10.3 10.06-22.49 16.14-31.91"/><path fill="#fff" d="M1357.18 1574.27c5.65 2.99 22.3 44.51 26.07 53.72l-22.73-.17-27.48.13c8.02-15.94 17.29-37.31 24.14-53.68"/><path fill="#f4a01b" d="M743.614 1542.43c7.437-.12 14.846.36 22.273.74 19.929 46.33 42.503 91.64 62.258 137.79-9.355 1.08-17.191 1-26.52.92l-14.185-30.85-27.69-.43c-14.567-.5-29.529-.61-44.156-.95-3.988 10.89-9.022 21.73-13.858 32.27-8.71.07-17.421.04-26.131-.08 9.593-25.56 24.561-53.34 35.651-78.69 8.078-18.46 17.562-38.34 26.409-56.58 1.729-3.56 2.944-3.38 5.949-4.14"/><path fill="#fff" d="M751.557 1573.65c3.588 2.78 22.485 47.23 25.668 54.46l-23.097-.13-27.477-.51c7.35-11.97 18.267-39.68 24.906-53.82"/><path fill="#f4a01b" d="M967.115 1542.27c22.678-2.33 41.735-.35 60.255 13.18-2.65 7.29-5.27 12.37-10.08 18.44-14.62-6.51-24.596-10.91-41.037-10.5-8.078.21-13.572.68-20.125 6.94-2.304 2.2-4.033 7.38-3.662 10.56 2.703 23.12 54.184 17.72 70.214 36.27 6.82 6.52 10.42 13.63 10.71 23.45.94 31.31-26.77 42.08-52.743 42.88-22.771-.33-40.17-4.56-57.709-19.47 3.623-6.73 7.151-11.95 11.814-17.94 15.998 11.52 52.473 26.75 70.108 6.82 15.46-17.47-20.543-27.23-32.074-29.9-14.752-3.85-39.7-11.69-44.352-28.58-8.438-30.62 11.458-48.3 38.681-52.15m183.055.63c8.3-.16 17.1.04 25.43.09l.32 85.72c.03 15.41.71 37.46-.44 52.24-9.06.96-16.38.87-25.44.86-.8-17.33-.28-37.99-.28-55.55-.2-27.79-.06-55.58.41-83.36"/></svg>
+                    </a>
+                    <p>Надежная платформа для аренды и покупки недвижимости в странах Азии.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--bg-white); margin-bottom: 15px;">Контакты</h3>
+                    <p><strong>Адрес:</strong> 123 Nguyen Van Linh, Da Nang, Vietnam</p>
+                    <p><strong>Email:</strong> contact@keyhaven.asia</p>
+                    <p><strong>Телефон:</strong> +84 123 456 789</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--bg-white); margin-bottom: 15px;">Юридическая информация</h3>
+                    <p><strong>Юр. лицо:</strong> KeyHaven Asia Co. Ltd.</p>
+                    <p><strong>Рег. номер:</strong> VN987654321</p>
+                    <br>
+                    <p><a href="/ru/privacy-policy/">Политика конфиденциальности</a></p>
+                    <p><a href="/ru/terms/">Пользовательское соглашение</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                &copy; 2026 KeyHaven Asia. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ПЛАВАЮЩИЕ КНОПКИ СВЯЗИ (WIDGETS) -->
+    <div class="floating-widgets">
+        <a href="https://wa.me/84123456789" target="_blank" class="widget-btn bg-wa" aria-label="WhatsApp">✆</a>
+        <a href="https://t.me/keyhaven_bot" target="_blank" class="widget-btn bg-tg" aria-label="Telegram">✈</a>
+    </div>
+
+    <!-- JAVASCRIPT ДЛЯ БАЗОВОГО ИНТЕРАКТИВА -->
+    <script>
+        // Мобильное меню
+        const burgerBtn = document.getElementById('burger-menu');
+        const header = document.getElementById('header');
+
+        burgerBtn.addEventListener('click', () => {
+            header.classList.toggle('mobile-menu-active');
+            burgerBtn.textContent = header.classList.contains('mobile-menu-active') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav-links a, .search-btn').forEach(link => {
+            link.addEventListener('click', () => {
+                header.classList.remove('mobile-menu-active');
+                burgerBtn.textContent = '☰';
+            });
+        });
+
+        // Аккордеон для FAQ
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
