@@ -291,16 +291,20 @@
             .search-btn { width: 100%; border-radius: var(--radius-md); margin: 10px 0 0 0; }
             .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
             .footer-logo { margin-left: 0; }
+            /* Длинные названия объектов переносятся на две строки, а не обрезаются */
+            .card-title { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
             .hero h1 { font-size: 2.68rem; }
             .quiz-banner { padding: 20px 18px; }
         }
         @media (max-width: 600px) {
+            .logo svg { width: 196px; }
             .hero { padding: 64px 20px; min-height: auto; }
             .hero h1 { font-size: 2.05rem; }
             .hero p { font-size: 1.02rem; margin-bottom: 28px; }
             .section-title { font-size: 1.65rem; }
             .card { flex: 0 0 260px; }
             .card-img-wrap { height: 190px; }
+            .card-content { padding: 18px; }
             .cards-nav button { width: 40px; height: 40px; font-size: 1.1rem; }
             .footer-logo { margin-left: 0; }
         }
@@ -671,13 +675,7 @@
                 <a href="/ru/buy/" class="btn-outline">Смотреть все варианты для покупки</a>
             </div>
         </section>
-        <!-- БЛОК FAQ -->
-        <section class="section-padding bg-gray" id="faq">
-            <div class="container" style="max-width: 900px;">
-
-            </div>
-        </section>
-    </main>
+        </main>
 
     <!-- ПОДВАЛ (ФУТЕР) С E-E-A-T ДАННЫМИ -->
     <footer>
