@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>KeyHaven Asia</title>
-    
-    <!-- Универсальный редирект для мета-тега (без слэша в начале) -->
-    <meta http-equiv="refresh" content="0; url=en/" />
-    
+    <!-- Редирект на английский по умолчанию (с учетом имени репозитория) -->
+    <meta http-equiv="refresh" content="0; url=/Profile-test-project/en/" />
     <script>
-        // Определяем язык браузера пользователя
+        // Имя вашего репозитория на GitHub
+        var repoName = '/Profile-test-project';
+        
+        // Определяем язык
         var userLang = navigator.language || navigator.userLanguage; 
         
-        // Делаем редирект с помощью относительных путей. 
-        // Это сработает и на localhost, и на GitHub Pages!
+        // Делаем редирект (используем replace, чтобы не ломать историю браузера)
         if (userLang.startsWith('ru')) {
-            window.location.replace('ru/');
+            window.location.replace(repoName + '/ru/');
         } else {
-            window.location.replace('en/');
+            window.location.replace(repoName + '/en/');
         }
     </script>
 </head>
 <body>
-    <p>Redirecting to <a href="en/">KeyHaven Asia...</a></p>
+    <p>Redirecting to <a href="/Profile-test-project/en/">KeyHaven Asia...</a></p>
 </body>
 </html>
