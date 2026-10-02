@@ -86,6 +86,7 @@
 
         .container { width: 100%; max-width: 1600px; margin: 0 auto; padding: 0 20px; }
         .section-title { font-size: 2.2rem; color: var(--text-dark); margin-bottom: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+        .section-title::after { content: ""; display: block; width: 56px; height: 4px; border-radius: 999px; background: var(--accent); margin-top: 16px; }
         .section-subtitle { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 3rem; max-width: 800px; }
 
         /* =========================================
@@ -210,6 +211,26 @@
         .btn-outline:hover { background-color: var(--primary); color: var(--bg-white); }
 
         /* =========================================
+           КАРУСЕЛЬ КАРТОЧЕК + ЗАГОЛОВКИ СЕКЦИЙ
+           ========================================= */
+        .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+        .section-head .section-title { margin-bottom: 0; }
+        .cards-nav { display: flex; gap: 10px; }
+        .cards-nav button {
+            width: 46px; height: 46px; border-radius: 50%;
+            border: 1px solid var(--border-color); background: var(--bg-white);
+            color: var(--primary); font-size: 1.3rem; line-height: 1;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: var(--transition); font-family: inherit; padding: 0;
+        }
+        .cards-nav button:hover { background: var(--primary); color: var(--bg-white); border-color: var(--primary); transform: translateY(-2px); }
+        .cards-nav button:disabled { opacity: 0.35; cursor: default; transform: none; }
+        .cards-wrapper::-webkit-scrollbar { height: 8px; }
+        .cards-wrapper::-webkit-scrollbar-track { background: transparent; }
+        .cards-wrapper::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 999px; }
+        .cards-wrapper::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* =========================================
            НОВЫЕ БЛОКИ: ПОДБЕРИ САМ, E-E-A-T, FAQ
            ========================================= */
         .quiz-banner {
@@ -239,7 +260,10 @@
            ========================================= */
         footer { background-color: var(--text-dark); color: #D1D5DB; padding: 60px 0 30px; font-size: 0.95rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer-logo svg { width: 150px; margin-bottom: 20px; opacity: 0.9; }
+        .footer-logo { display: inline-block; margin-left: 32px; }
+        .footer-logo svg { width: 150px; margin-bottom: 20px; opacity: 1; }
+        /* Тёмно-бирюзовый контур логотипа не читается на тёмном фоне — делаем его белым */
+        .footer-logo svg path[fill="#076D68"] { fill: #FFFFFF; }
         .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-gray); font-size: 0.85rem; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-bottom a:hover { color: var(--bg-white); }
 
@@ -251,20 +275,34 @@
             .header-center { display: flex; }
         }
         @media (min-width: 1600px) {
-            .cards-wrapper { overflow-x: visible; }
-            .cards-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
-            .card { flex: none; width: 100%; }
+            /* На больших экранах карусель сохраняем, но карточки делаем крупнее */
+            .card { flex: 0 0 340px; }
+            .card-img-wrap { height: 250px; }
         }
         @media (max-width: 1023px) {
-            .mobile-menu-active .header-center { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: var(--shadow-md); border-top: 1px solid var(--border-color); }
+            .mobile-menu-active .header-center { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-white); padding: 20px; box-shadow: var(--shadow-md); border-top: 1px solid var(--border-color); max-height: calc(100vh - 72px); overflow-y: auto; }
             .mobile-menu-active .nav-links { flex-direction: column; align-items: center; margin-top: 20px; }
             .header-search { flex-direction: column; border-radius: var(--radius-md); padding: 15px; width: 100%; }
             .search-divider { width: 100%; height: 1px; margin: 10px 0; }
             .search-input, .search-item, .search-dropdown, .search-select-toggle { width: 100%; text-align: center; }
             .search-select-toggle { justify-content: center; }
+            /* Выпадающий список в мобильном меню — в потоке, чтобы не перекрывать кнопку «Найти» */
+            .search-dropdown-menu { position: static; left: auto; top: auto; transform: none; width: 100%; margin-top: 10px; border-radius: var(--radius-md); }
             .search-btn { width: 100%; border-radius: var(--radius-md); margin: 10px 0 0 0; }
+            .section-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .footer-logo { margin-left: 0; }
             .hero h1 { font-size: 2.68rem; }
             .quiz-banner { padding: 20px 18px; }
+        }
+        @media (max-width: 600px) {
+            .hero { padding: 64px 20px; min-height: auto; }
+            .hero h1 { font-size: 2.05rem; }
+            .hero p { font-size: 1.02rem; margin-bottom: 28px; }
+            .section-title { font-size: 1.65rem; }
+            .card { flex: 0 0 260px; }
+            .card-img-wrap { height: 190px; }
+            .cards-nav button { width: 40px; height: 40px; font-size: 1.1rem; }
+            .footer-logo { margin-left: 0; }
         }
     </style>
 </head>
@@ -352,7 +390,13 @@
         <!-- РАЗДЕЛ "АРЕНДА" -->
         <section class="section-padding bg-gray section-pb-sm" id="rent">
             <div class="container">
-                <h2 class="section-title">Долгосрочная аренда недвижимости (Тайланд, Вьетнам, Индонезия)</h2>
+                <div class="section-head">
+                    <h2 class="section-title">Долгосрочная аренда недвижимости (Тайланд, Вьетнам, Индонезия)</h2>
+                    <div class="cards-nav">
+                        <button type="button" class="cards-prev" aria-label="Предыдущие карточки">‹</button>
+                        <button type="button" class="cards-next" aria-label="Следующие карточки">›</button>
+                    </div>
+                </div>
                 
                 <div class="cards-wrapper">
                     <div class="cards-grid">
@@ -415,6 +459,66 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Карточка 5 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Пентхаус с панорамным видом в Дананге для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Дананг, Вьетнам</div>
+                                <h3 class="card-title">Пентхаус с панорамным видом</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 2 спальни</span><span>📏 95 м²</span></div>
+                                    <div class="card-price">$1,200 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 6 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Семейные апартаменты у пляжа на Пхукете для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Пхукет, Тайланд</div>
+                                <h3 class="card-title">Семейные апартаменты у пляжа</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 3 спальни</span><span>📏 110 м²</span></div>
+                                    <div class="card-price">$1,100 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 7 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Вилла с приватным бассейном на Бали для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Бали, Индонезия</div>
+                                <h3 class="card-title">Вилла с приватным бассейном</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 4 спальни</span><span>📏 180 м²</span></div>
+                                    <div class="card-price">$2,300 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 8 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Апартаменты с фитнес-залом в Хошимине для долгосрочной аренды — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Хошимин, Вьетнам</div>
+                                <h3 class="card-title">Апартаменты с фитнес-залом</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>🛏 1 спальня</span><span>📏 52 м²</span></div>
+                                    <div class="card-price">$700 <span>/ мес</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -436,7 +540,13 @@
         <!-- РАЗДЕЛ "ПОКУПКА" -->
         <section class="section-padding bg-gray section-pt-sm" id="buy">
             <div class="container">
-                <h2 class="section-title">Каталог объектов: покупка жилья в Азии для жизни и инвестиций</h2>
+                <div class="section-head">
+                    <h2 class="section-title">Каталог объектов: покупка жилья в Азии для жизни и инвестиций</h2>
+                    <div class="cards-nav">
+                        <button type="button" class="cards-prev" aria-label="Предыдущие карточки">‹</button>
+                        <button type="button" class="cards-next" aria-label="Следующие карточки">›</button>
+                    </div>
+                </div>
                 
                 <div class="cards-wrapper">
                     <div class="cards-grid">
@@ -492,6 +602,66 @@
                                 <div class="card-details">
                                     <div class="card-features"><span>📏 280 м²</span></div>
                                     <div class="card-price">$390,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 5 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Апартаменты в новом комплексе в Дананге для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Дананг, Вьетнам</div>
+                                <h3 class="card-title">Апартаменты в новом комплексе</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 78 м²</span></div>
+                                    <div class="card-price">$155,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 6 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Современный дом с террасой на Бали для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Бали, Индонезия</div>
+                                <h3 class="card-title">Современный дом с террасой</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 210 м²</span></div>
+                                    <div class="card-price">$265,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 7 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Апартаменты с панорамными окнами на Пхукете для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Пхукет, Тайланд</div>
+                                <h3 class="card-title">Апартаменты с панорамными окнами</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 96 м²</span></div>
+                                    <div class="card-price">$175,000</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Карточка 8 -->
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Светлые апартаменты в центре Хошимина для покупки — KeyHaven Asia" loading="lazy" class="card-img">
+                            </div>
+                            <div class="card-content">
+                                <div class="card-location">Хошимин, Вьетнам</div>
+                                <h3 class="card-title">Светлые апартаменты в центре</h3>
+                                <div class="card-details">
+                                    <div class="card-features"><span>📏 120 м²</span></div>
+                                    <div class="card-price">$198,000</div>
                                 </div>
                             </div>
                         </div>
@@ -626,6 +796,28 @@
 
         // Закрытие выпадающих списков по клику вне их области
         document.addEventListener('click', () => closeDropdowns());
+
+        // Горизонтальная карусель карточек (Аренда / Покупка)
+        document.querySelectorAll('.cards-wrapper').forEach(wrapper => {
+            const section = wrapper.closest('section');
+            if (!section) return;
+            const prev = section.querySelector('.cards-prev');
+            const next = section.querySelector('.cards-next');
+            if (!prev || !next) return;
+
+            const step = () => Math.max(wrapper.clientWidth * 0.8, 320);
+            prev.addEventListener('click', () => wrapper.scrollBy({ left: -step(), behavior: 'smooth' }));
+            next.addEventListener('click', () => wrapper.scrollBy({ left: step(), behavior: 'smooth' }));
+
+            const update = () => {
+                const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+                prev.disabled = wrapper.scrollLeft <= 4;
+                next.disabled = wrapper.scrollLeft >= maxScroll - 4;
+            };
+            wrapper.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        });
     </script>
 </body>
 </html>
