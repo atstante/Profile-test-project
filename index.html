@@ -2,25 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KeyHaven Asia</title>
-    <!-- Редирект на английский по умолчанию (с учетом имени репозитория) -->
-    <meta http-equiv="refresh" content="0; url=/Profile-test-project/en/" />
     <script>
-        // Имя вашего репозитория на GitHub
-        var repoName = '/Profile-test-project';
-        
-        // Определяем язык
-        var userLang = navigator.language || navigator.userLanguage; 
-        
-        // Делаем редирект (используем replace, чтобы не ломать историю браузера)
-        if (userLang.startsWith('ru')) {
-            window.location.replace(repoName + '/ru/');
-        } else {
-            window.location.replace(repoName + '/en/');
-        }
+        // Относительный редирект: работает и локально (file://), и на GitHub Pages, и на своём домене.
+        // Определяем язык браузера: ru* -> русская версия, иначе -> английская.
+        var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+        window.location.replace(lang.indexOf('ru') === 0 ? 'ru/' : 'en/');
     </script>
+    <!-- Фолбэк, если JavaScript отключён: редирект на английскую версию -->
+    <noscript><meta http-equiv="refresh" content="0; url=en/"></noscript>
 </head>
 <body>
-    <p>Redirecting to <a href="/Profile-test-project/en/">KeyHaven Asia...</a></p>
+    <p>Redirecting to <a href="en/">KeyHaven Asia...</a></p>
 </body>
 </html>
