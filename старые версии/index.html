@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KeyHaven Asia</title>
+    <!-- Редирект на английский по умолчанию (с учетом имени репозитория) -->
+    <meta http-equiv="refresh" content="0; url=/Profile-test-project/en/" />
+    <script>
+        // Имя вашего репозитория на GitHub
+        var repoName = '/Profile-test-project';
+        
+        // Определяем язык
+        var userLang = navigator.language || navigator.userLanguage; 
+        
+        // Делаем редирект (используем replace, чтобы не ломать историю браузера)
+        if (userLang.startsWith('ru')) {
+            window.location.replace(repoName + '/ru/');
+        } else {
+            window.location.replace(repoName + '/en/');
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to <a href="/Profile-test-project/en/">KeyHaven Asia...</a></p>
+</body>
+</html>
